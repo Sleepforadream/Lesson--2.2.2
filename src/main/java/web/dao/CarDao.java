@@ -1,10 +1,11 @@
-package web.service;
+package web.dao;
 
 import web.model.CarModel;
 
 import java.util.List;
 
-public interface CarService {
+public interface CarDao {
+
     void addCar(CarModel car);
 
     void removeCarById(int id);
@@ -13,7 +14,5 @@ public interface CarService {
 
     List<CarModel> getAllCars();
 
-    List<CarModel> getCarsByCount(String count);
-
-    void addMyCars();
+    List<CarModel> getCarsByCount(int count);
 }
