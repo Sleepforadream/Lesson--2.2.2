@@ -13,7 +13,6 @@ public interface CarService {
 
     List<CarModel> getAllCars();
 
-    List<CarModel> getCarsByCount(String count);
+    List<CarModel> getCarsByCount(int count);
 
-    void addMyCars();
 }

@@ -6,15 +6,15 @@ import web.dao.CarDao;
 import web.model.CarModel;
 
 import java.util.List;
+
 @Service
 public class CarServiceImpl implements CarService {
 
     CarDao carDao;
 
     @Autowired
-    CarServiceImpl (CarDao cardao) {
+    CarServiceImpl(CarDao cardao) {
         this.carDao = cardao;
-        addMyCars();
     }
 
     @Override
@@ -38,18 +38,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<CarModel> getCarsByCount(String count) {
-        if (count == null) return carDao.getAllCars();
-        try {
-            return carDao.getCarsByCount(Integer.parseInt(count));
-        } catch (NumberFormatException exception) {
-            return null;
-        }
-    }
-
-    public void addMyCars() {
-        carDao.addCar(new CarModel("BMW","red",2009));
-        carDao.addCar(new CarModel("Mercedes","blue",2005));
-        carDao.addCar(new CarModel("Porsche","black",2019));
+    public List<CarModel> getCarsByCount(int count) {
+        return carDao.getCarsByCount(count);
     }
 }

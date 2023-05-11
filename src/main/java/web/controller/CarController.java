@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import web.model.CarModel;
+import org.springframework.web.bind.annotation.RequestParam;
 import web.service.CarService;
 
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class CarController {
@@ -21,8 +19,8 @@ public class CarController {
     }
 
     @GetMapping(value = "/cars")
-    public String viewSalon(ModelMap model, HttpServletRequest request) {
-        model.addAttribute("cars", carService.getCarsByCount(request.getParameter("count")));
+    public String viewSalon(@RequestParam(value = "count", required = false, defaultValue = "5") int count, ModelMap model) {
+        model.addAttribute("cars", carService.getCarsByCount(count));
         return "salon/cars";
     }
 }
