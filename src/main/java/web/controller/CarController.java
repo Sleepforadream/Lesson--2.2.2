@@ -19,7 +19,7 @@ public class CarController {
     }
 
     @GetMapping(value = "/cars")
-    public String viewSalon(@RequestParam(value = "count", required = false, defaultValue = "5") int count, ModelMap model) {
+    public String viewSalon(@RequestParam(value = "count", defaultValue = "5") int count, ModelMap model) {
         model.addAttribute("cars", carService.getCarsByCount(count));
         return "salon/cars";
     }
